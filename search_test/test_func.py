@@ -1,3 +1,7 @@
+PLAYER_X = "X"
+PLAYER_O = "O"
+EMPTY = " "
+
 def test_evaluate(func):
     def evaluate(board):
         '''This function evaluates the current state of the board and determines the outcome of the game.
