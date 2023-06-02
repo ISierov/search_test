@@ -130,6 +130,8 @@ def test_evaluate(func):
     if func(board3) != evaluate(board3):
         print("Incorrect output of evaluate. (test 3)")
 
+    return func
+
 def test_best_move(func):
     board1 = [[PLAYER_O, PLAYER_O, PLAYER_X],
                   [EMPTY, PLAYER_X, EMPTY],
@@ -149,6 +151,8 @@ def test_best_move(func):
     if func(board3) != get_best_move(board3):
         print("Incorrect output of get_best_move. (test 3)")
 
+    return func
+
 def test_minimax(func):
     board1 = [[PLAYER_O, PLAYER_O, PLAYER_X],
               [EMPTY, PLAYER_X, EMPTY],
@@ -167,6 +171,8 @@ def test_minimax(func):
               [EMPTY, EMPTY, PLAYER_X]]
     if func(board3, 0, float('-inf'), float('inf'), False) != minimax(board3, 0, float('-inf'), float('inf'), False):
         print("Incorrect output of get_best_move. (test 3)")
+
+    return func
 
 
 
