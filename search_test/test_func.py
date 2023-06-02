@@ -133,7 +133,7 @@ def test_evaluate(func):
         print("Incorrect output of evaluate. (test 1)")
         return
     else:
-        print("Test1 passed.")
+        print("Test1 passed. (evaluate)")
 
     board2 = [[PLAYER_O, PLAYER_O, PLAYER_O],
                   [EMPTY, PLAYER_X, EMPTY],
@@ -142,7 +142,7 @@ def test_evaluate(func):
         print("Incorrect output of evaluate. (test 2)")
         return
     else:
-        print("Test2 passed.")
+        print("Test2 passed. (evaluate)")
 
     board3 = [[PLAYER_X, PLAYER_O, PLAYER_O],
                   [EMPTY, PLAYER_X, EMPTY],
@@ -151,7 +151,7 @@ def test_evaluate(func):
         print("Incorrect output of evaluate. (test 3)")
         return
     else:
-        print("Test3 passed.")
+        print("Test3 passed. (evaluate)")
 
     return func
 
@@ -163,7 +163,7 @@ def test_best_move(func):
         print("Incorrect output of get_best_move. (test 1)")
         return
     else:
-        print("Test1 passed.")
+        print("Test1 passed. (get_best_move)")
 
     board2 = [[PLAYER_O, PLAYER_O, PLAYER_O],
                   [EMPTY, PLAYER_X, EMPTY],
@@ -172,7 +172,7 @@ def test_best_move(func):
         print("Incorrect output of get_best_move. (test 2)")
         return
     else:
-        print("Test2 passed.")
+        print("Test2 passed. (get_best_move)")
 
     board3 = [[PLAYER_X, PLAYER_O, PLAYER_O],
                   [EMPTY, PLAYER_X, EMPTY],
@@ -181,7 +181,7 @@ def test_best_move(func):
         print("Incorrect output of get_best_move. (test 3)")
         return
     else:
-        print("Test3 passed.")
+        print("Test3 passed. (get_best_move)")
 
     return func
 
@@ -193,7 +193,7 @@ def test_minimax(func):
         print("Incorrect output of get_best_move. (test 1)")
         return
     else:
-        print("Test1 passed.")
+        print("Test1 passed. (minimax)")
 
     board2 = [[PLAYER_O, PLAYER_O, PLAYER_O],
               [EMPTY, PLAYER_X, EMPTY],
@@ -202,7 +202,7 @@ def test_minimax(func):
         print("Incorrect output of get_best_move. (test 2)")
         return
     else:
-        print("Test2 passed.")
+        print("Test2 passed. (minimax)")
 
     board3 = [[PLAYER_X, PLAYER_O, PLAYER_O],
               [EMPTY, PLAYER_X, EMPTY],
@@ -211,7 +211,7 @@ def test_minimax(func):
         print("Incorrect output of get_best_move. (test 3)")
         return
     else:
-        print("Test3 passed.")
+        print("Test3 passed. (minimax)")
 
     return func
 
