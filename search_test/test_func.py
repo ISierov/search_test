@@ -131,18 +131,27 @@ def test_evaluate(func):
                   [EMPTY, EMPTY, PLAYER_X]]
     if func(board1) != evaluate(board1):
         print("Incorrect output of evaluate. (test 1)")
+        return
+    else:
+        print("Test1 passed.")
 
     board2 = [[PLAYER_O, PLAYER_O, PLAYER_O],
                   [EMPTY, PLAYER_X, EMPTY],
                   [EMPTY, EMPTY, PLAYER_X]]
     if func(board2) != evaluate(board2):
         print("Incorrect output of evaluate. (test 2)")
+        return
+    else:
+        print("Test2 passed.")
 
     board3 = [[PLAYER_X, PLAYER_O, PLAYER_O],
                   [EMPTY, PLAYER_X, EMPTY],
                   [EMPTY, EMPTY, PLAYER_X]]
     if func(board3) != evaluate(board3):
         print("Incorrect output of evaluate. (test 3)")
+        return
+    else:
+        print("Test3 passed.")
 
     return func
 
@@ -152,18 +161,27 @@ def test_best_move(func):
                   [EMPTY, EMPTY, PLAYER_X]]
     if func(board1) != get_best_move(board1):
         print("Incorrect output of get_best_move. (test 1)")
+        return
+    else:
+        print("Test1 passed.")
 
     board2 = [[PLAYER_O, PLAYER_O, PLAYER_O],
                   [EMPTY, PLAYER_X, EMPTY],
                   [EMPTY, EMPTY, PLAYER_X]]
     if func(board2) != get_best_move(board2):
         print("Incorrect output of get_best_move. (test 2)")
+        return
+    else:
+        print("Test2 passed.")
 
     board3 = [[PLAYER_X, PLAYER_O, PLAYER_O],
                   [EMPTY, PLAYER_X, EMPTY],
                   [EMPTY, EMPTY, PLAYER_X]]
     if func(board3) != get_best_move(board3):
         print("Incorrect output of get_best_move. (test 3)")
+        return
+    else:
+        print("Test3 passed.")
 
     return func
 
@@ -173,18 +191,27 @@ def test_minimax(func):
               [EMPTY, EMPTY, PLAYER_X]]
     if func(board1, 0, float('-inf'), float('inf'), False) != minimax(board1, 0, float('-inf'), float('inf'), False):
         print("Incorrect output of get_best_move. (test 1)")
+        return
+    else:
+        print("Test1 passed.")
 
     board2 = [[PLAYER_O, PLAYER_O, PLAYER_O],
               [EMPTY, PLAYER_X, EMPTY],
               [EMPTY, EMPTY, PLAYER_X]]
     if func(board2, 0, float('-inf'), float('inf'), False) != minimax(board2, 0, float('-inf'), float('inf'), False):
         print("Incorrect output of get_best_move. (test 2)")
+        return
+    else:
+        print("Test2 passed.")
 
     board3 = [[PLAYER_X, PLAYER_O, PLAYER_O],
               [EMPTY, PLAYER_X, EMPTY],
               [EMPTY, EMPTY, PLAYER_X]]
     if func(board3, 0, float('-inf'), float('inf'), False) != minimax(board3, 0, float('-inf'), float('inf'), False):
         print("Incorrect output of get_best_move. (test 3)")
+        return
+    else:
+        print("Test3 passed.")
 
     return func
 
