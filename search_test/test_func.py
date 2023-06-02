@@ -1,6 +1,20 @@
 PLAYER_X = "X"
 PLAYER_O = "O"
 EMPTY = " "
+def is_full(board):
+    for row in board:
+        if EMPTY in row:
+            return False
+    return True
+
+def get_empty_cells(board):
+    empty_cells = []
+    for row in range(3):
+        for col in range(3):
+            if board[row][col] == EMPTY:
+                empty_cells.append((row, col))
+    return empty_cells
+
 
 def evaluate(board):
     '''This function evaluates the current state of the board and determines the outcome of the game.
@@ -173,8 +187,6 @@ def test_minimax(func):
         print("Incorrect output of get_best_move. (test 3)")
 
     return func
-
-
 
 
 
