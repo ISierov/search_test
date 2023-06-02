@@ -2,97 +2,45 @@ PLAYER_X = "X"
 PLAYER_O = "O"
 EMPTY = " "
 
-def test_evaluate(func):
-    def evaluate(board):
-        '''This function evaluates the current state of the board and determines the outcome of the game.
+def evaluate(board):
+    '''This function evaluates the current state of the board and determines the outcome of the game.
 
-        Parameters:
-            board (list): A 3x3 array representing the board state with symbols.
+    Parameters:
+        board (list): A 3x3 array representing the board state with symbols.
 
-        Returns:
-            int:
-                -1 if PLAYER_O has won.
-                1 if PLAYER_X has won.
-                0 if the game is a draw or still ongoing.
-        '''
-        # Function code here
-        # Check rows
-        for row in board:
-            if row.count(PLAYER_X) == 3:
-                return 1
-            elif row.count(PLAYER_O) == 3:
-                return -1
-
-        # Check columns
-        for col in range(3):
-            if board[0][col] == board[1][col] == board[2][col] == PLAYER_X:
-                return 1
-            elif board[0][col] == board[1][col] == board[2][col] == PLAYER_O:
-                return -1
-
-        # Check diagonals
-        if board[0][0] == board[1][1] == board[2][2] == PLAYER_X or board[0][2] == board[1][1] == board[2][
-            0] == PLAYER_X:
+    Returns:
+        int:
+            -1 if PLAYER_O has won.
+            1 if PLAYER_X has won.
+            0 if the game is a draw or still ongoing.
+    '''
+    # Function code here
+    # Check rows
+    for row in board:
+        if row.count(PLAYER_X) == 3:
             return 1
-        elif board[0][0] == board[1][1] == board[2][2] == PLAYER_O or board[0][2] == board[1][1] == board[2][
-            0] == PLAYER_O:
+        elif row.count(PLAYER_O) == 3:
             return -1
 
-        # Game is a draw
-        return 0
+    # Check columns
+    for col in range(3):
+        if board[0][col] == board[1][col] == board[2][col] == PLAYER_X:
+            return 1
+        elif board[0][col] == board[1][col] == board[2][col] == PLAYER_O:
+            return -1
 
-    board1 = [[PLAYER_O, PLAYER_O, PLAYER_X],
-                  [EMPTY, PLAYER_X, EMPTY],
-                  [EMPTY, EMPTY, PLAYER_X]]
-    if func(board1) != evaluate(board1):
-        print("Incorrect output of evaluate. (test 1)")
+    # Check diagonals
+    if board[0][0] == board[1][1] == board[2][2] == PLAYER_X or board[0][2] == board[1][1] == board[2][
+        0] == PLAYER_X:
+        return 1
+    elif board[0][0] == board[1][1] == board[2][2] == PLAYER_O or board[0][2] == board[1][1] == board[2][
+        0] == PLAYER_O:
+        return -1
 
-    board2 = [[PLAYER_O, PLAYER_O, PLAYER_O],
-                  [EMPTY, PLAYER_X, EMPTY],
-                  [EMPTY, EMPTY, PLAYER_X]]
-    if func(board2) != evaluate(board2):
-        print("Incorrect output of evaluate. (test 2)")
+    # Game is a draw
+    return 0
 
-    board3 = [[PLAYER_X, PLAYER_O, PLAYER_O],
-                  [EMPTY, PLAYER_X, EMPTY],
-                  [EMPTY, EMPTY, PLAYER_X]]
-    if func(board3) != evaluate(board3):
-        print("Incorrect output of evaluate. (test 3)")
-
-def test_best_move(func):
-    def get_best_move(board):
-        best_score = -10
-        best_move = None
-        for row, col in get_empty_cells(board):
-            board[row][col] = PLAYER_X
-            score = minimax(board, 0, float('-inf'), float('inf'), False)
-            board[row][col] = EMPTY
-            if score > best_score:
-                best_score = score
-                best_move = (row, col)
-        return best_move
-
-    board1 = [[PLAYER_O, PLAYER_O, PLAYER_X],
-                  [EMPTY, PLAYER_X, EMPTY],
-                  [EMPTY, EMPTY, PLAYER_X]]
-    if func(board1) != get_best_move(board1):
-        print("Incorrect output of get_best_move. (test 1)")
-
-    board2 = [[PLAYER_O, PLAYER_O, PLAYER_O],
-                  [EMPTY, PLAYER_X, EMPTY],
-                  [EMPTY, EMPTY, PLAYER_X]]
-    if func(board2) != get_best_move(board2):
-        print("Incorrect output of get_best_move. (test 2)")
-
-    board3 = [[PLAYER_X, PLAYER_O, PLAYER_O],
-                  [EMPTY, PLAYER_X, EMPTY],
-                  [EMPTY, EMPTY, PLAYER_X]]
-    if func(board3) != get_best_move(board3):
-        print("Incorrect output of get_best_move. (test 3)")
-
-
-def test_minimax(func):
-    def minimax(board, depth, alpha, beta, is_maximizing):
+def minimax(board, depth, alpha, beta, is_maximizing):
         '''Implements the Minimax algorithm with Alpha-Beta pruning to determine the optimal score for a given board state.
 
         Parameters:
@@ -150,6 +98,58 @@ def test_minimax(func):
 
             return min_eval
 
+def get_best_move(board):
+    best_score = -10
+    best_move = None
+    for row, col in get_empty_cells(board):
+        board[row][col] = PLAYER_X
+        score = minimax(board, 0, float('-inf'), float('inf'), False)
+        board[row][col] = EMPTY
+        if score > best_score:
+            best_score = score
+            best_move = (row, col)
+    return best_move
+
+def test_evaluate(func):
+
+    board1 = [[PLAYER_O, PLAYER_O, PLAYER_X],
+                  [EMPTY, PLAYER_X, EMPTY],
+                  [EMPTY, EMPTY, PLAYER_X]]
+    if func(board1) != evaluate(board1):
+        print("Incorrect output of evaluate. (test 1)")
+
+    board2 = [[PLAYER_O, PLAYER_O, PLAYER_O],
+                  [EMPTY, PLAYER_X, EMPTY],
+                  [EMPTY, EMPTY, PLAYER_X]]
+    if func(board2) != evaluate(board2):
+        print("Incorrect output of evaluate. (test 2)")
+
+    board3 = [[PLAYER_X, PLAYER_O, PLAYER_O],
+                  [EMPTY, PLAYER_X, EMPTY],
+                  [EMPTY, EMPTY, PLAYER_X]]
+    if func(board3) != evaluate(board3):
+        print("Incorrect output of evaluate. (test 3)")
+
+def test_best_move(func):
+    board1 = [[PLAYER_O, PLAYER_O, PLAYER_X],
+                  [EMPTY, PLAYER_X, EMPTY],
+                  [EMPTY, EMPTY, PLAYER_X]]
+    if func(board1) != get_best_move(board1):
+        print("Incorrect output of get_best_move. (test 1)")
+
+    board2 = [[PLAYER_O, PLAYER_O, PLAYER_O],
+                  [EMPTY, PLAYER_X, EMPTY],
+                  [EMPTY, EMPTY, PLAYER_X]]
+    if func(board2) != get_best_move(board2):
+        print("Incorrect output of get_best_move. (test 2)")
+
+    board3 = [[PLAYER_X, PLAYER_O, PLAYER_O],
+                  [EMPTY, PLAYER_X, EMPTY],
+                  [EMPTY, EMPTY, PLAYER_X]]
+    if func(board3) != get_best_move(board3):
+        print("Incorrect output of get_best_move. (test 3)")
+
+def test_minimax(func):
     board1 = [[PLAYER_O, PLAYER_O, PLAYER_X],
               [EMPTY, PLAYER_X, EMPTY],
               [EMPTY, EMPTY, PLAYER_X]]
